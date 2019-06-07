@@ -10,6 +10,7 @@
 *	- estado.h
 */
 
+#include <QString>
 #include <iostream>
 #include <vector>
 #include "estado.h"
@@ -77,7 +78,7 @@ public:
 	 * Pré-condição: Nenhuma
 	 * Pós-condição: O conteúdo do automato é mostrado na tela
 	*/
-	void show();
+	QString show();
 	/* Retorna um Estado especifico
 	 * Entrada: inteiro que representa o estado
 	 * Retorno: Ponteiro do estado especifico

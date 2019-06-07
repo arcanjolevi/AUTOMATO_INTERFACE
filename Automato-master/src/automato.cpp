@@ -87,41 +87,49 @@ int Automato::getnDeEstados(){
  * Pré-condição: Nenhuma
  * Pós-condição: O conteúdo do automato é mostrado na tela
 */
-void Automato::show(){
+QString Automato::show(){
+    QString completo="";
 	system("clear");
 	int i,k;
-	cout << "alfabeto={";
+	completo += "alfabeto={";
 	for(i=0;i<this->alfabeto.size();i++){
-		cout << this->alfabeto[i];
+		completo += this->alfabeto[i];
 		if(i != alfabeto.size()-1){
-			cout << ",";
+			completo += ",";
 		}
 	}
-	cout << "}\n";
-	cout << "estados={";
+	completo += "}\n";
+	completo += "estados={";
 	for(i=0;i<this->nDeEstados;i++){
-		this->estados[i]->show();
+		completo += QString::fromStdString(this->estados[i]->getNome());
 		if(i != this->nDeEstados-1){
-			cout << ",";
+			completo += ",";
 		}
 	}
-	cout << "}\n";
-	cout << "inicial=" << this->estados[this->getInitial()]->getNome() << endl;
-	cout << "finais={";
+	completo += "}\n";
+	completo += "inicial=";
+	completo += QString::fromStdString(this->estados[this->getInitial()]->getNome());
+	completo += "\n";
+	completo += "finais={";
 	for(i=0;i<this->getFinals().size();i++){
-		this->estados[this->getFinals()[i]]->show();
+		completo += QString::fromStdString(this->estados[this->getFinals()[i]]->getNome());
 		if(i != this->getFinals().size()-1){
-			cout << ",";
+			completo += ",";
 		}
 	}
-	cout << "}\n";
+	completo += "}\n";
 	for(i=0;i<this->nDeEstados;i++){
 		for(k=0;k<this->estados[i]->getNumeroDeTransicoes();k++){
-			cout << "(" << this->estados[i]->getNome() << ",";
-			cout << this->estados[i]->getTransicoes()[k]->getSimboloLido() << ") = ";
-			cout << this->estados[this->estados[i]->getTransicoes()[k]->getEstadoPossivel()]->getNome() << endl;
+			completo += "(";
+			completo += QString::fromStdString(this->estados[i]->getNome());
+			completo += ",";
+			completo += this->estados[i]->getTransicoes()[k]->getSimboloLido();
+			completo += ") = ";
+			completo += QString::fromStdString(this->estados[this->estados[i]->getTransicoes()[k]->getEstadoPossivel()]->getNome());
+			completo += "\n";
 		}
 	}
+	return completo;
 }
 
 /* Retorna um Estado especifico

@@ -24,9 +24,14 @@ Trabalho_Linguagens_Formais_e_Automatos::~Trabalho_Linguagens_Formais_e_Automato
  */
 void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_clicked()
 {
-    QString filename;
+   QString filename;
+    QByteArray temp;
+    char * temp2;
     filename = QFileDialog::getOpenFileName(this, tr("Abrir ficheiro"), "/home/", tr("Text files (*.txt)"));
-        
+    temp = filename.toLocal8Bit();
+    temp2 = temp.data();
+    AFD = NULL; readfile(&AFD,temp2);
+    //ui->textBrowser->setText(AFD->show);  
 }
 
 
@@ -53,8 +58,7 @@ void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_2_clicked()
     temp2 = temp.data();
     AFE = NULL; readfile(&AFE,temp2);
     AFD = convertAFEtoAFD(AFE);
-    //ui->textBrowser->setText(AFD->show);
-    
+    ui->textBrowser->setText(AFD->show());  
 }
 
 
@@ -73,14 +77,14 @@ void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_4_clicked()
  */
 void Trabalho_Linguagens_Formais_e_Automatos::on_ButtonOk_clicked()
 {       
-        //char temp[1000];
-        //strcpy(temp,"/home/faculdade/automato.txt");
-        //readfile(&AFD,temp);
+        char temp[1000];
+        strcpy(temp,"/home/faculdade/automato.txt");
+        readfile(&AFD,temp);
         char texto[1000];
         QString a;
         a = ui->lineEdit->text();
         strcpy(texto, a.toStdString().c_str());
-        //colocar aqui função para processar palavra:
+        //colocar aqui função para processar palavra
         a = QString::fromStdString(process(texto,AFD));
         ui->textBrowser->setText(a);
 }
