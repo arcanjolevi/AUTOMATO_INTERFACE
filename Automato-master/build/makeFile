@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ../src
+g++ automato.cpp estado.cpp main.cpp menu.cpp transicao.cpp carregaafd.cpp
+./a.out

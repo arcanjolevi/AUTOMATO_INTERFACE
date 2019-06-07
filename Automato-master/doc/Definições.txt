@@ -1,0 +1,142 @@
+Definições para o trabalho de LFA
+Link do Repositório: https://github.com/CaioslppUO/Automato
+
+REQUISITOS:
+
+	* [R001] Linguagem
+		- O programa deve ser feito em C++.
+
+	* [R002] Uso de bibliotecas
+		- O programa não deve utilizar bibliotecas prontas
+	
+	* [R003] Alfabeto
+		- O alfabeto de entrada pode conter letras minúsculas e/ou dígitos
+
+	* [R004] Especificações do AFD
+		- As especificações devem ser carregadas a partir de um arquivo texto
+	
+	* [R005] Cadeia vazia
+		- A cadeia vazia deve ser representada pelo símbolo @ (arroba)
+
+	* [R006] Entrada de cadeias
+		- Após carregar o AFD via arquivo, deve ser permitido ao usuário entrar com palavras(cadeias) para
+		processamento. Deve ser impresso na tela o passo a passo do processamento dessa cadeia, mostrando 
+		ao final se a palavra foi ou não reconhecida pelo AFD
+
+	* [R007] Conversão AF& para AFD
+		- Implementar o algorítimo de conversão com as especificações do AF& carregadas via arquivo texto
+		INFORMADO PELO USUÁRIO.
+
+	* [R008] Formato do arquivo do AFD
+		- O formato do arquivo de entrada do AFD segue o seguinte padrão:
+		alfabeto={a,b,c}
+		estados={q0,q1,q2,q3,q4}
+		inicial={q0}
+		finais={q2,q4}
+		(q0,a)= q1
+		(q1,a)= q1
+		(q1,b)= q2
+		(q2,b)= q2
+		...
+
+	* [R009] Impressão do processamento na tela
+		- A impressão do processamento na tela deve ser feito da seguinte maneira:
+		[estadoAtual]Palavra
+		...
+		ACEITA/REJEITA
+		EX:
+		[q0]aabbcc
+		...
+		ACEITA/REJEITA
+
+	* [R010] Formato do arquivo do AF&
+		- Idêntico ao AFD, porém, também deve ler @ como parte do alfabeto
+		EX:
+		alfabeto={a,b,c}
+		estados={q0,q1,q2,q3,q4}
+		inicial=q0
+		finais={q2,q4}
+		(q0,a)= q0,q1
+		(q1,a)= q1
+		(q1,@)= q2,q3
+
+	* [R011] Impressão da conversão AF& -> AFD
+		- Deve ser impresso na tela o seguinte modelo:
+		alfabeto={a,b,c}
+		estados={r0,r1,r2,r3,r4,r5}
+		inicial=r0
+		finais={r1,r2,r4,r5}
+		(r0,a)= r1
+		(r1,a)= r1
+		(r1,b)= r2
+
+DEFINIÇÕE DE COMENTÁRIOS:
+
+	/* Definição da função
+ 	 * Entrada:
+ 	 * Retorno:
+ 	 * Pré-condição: 
+ 	 * Pós-condição:
+	*/
+
+	-> Toda função e estrutura deve ser comentada (Somente nos arquivos .h)
+
+DEFINIÇÕES DE CABEÇÁLIO DE ARQUIVO:
+	
+	EXEMPLO:
+
+	/* "NOME_DO_ARQUIVO" 
+	 * VERSÃO: "VERSÃO_DO_ARQUIVO.ALTERAÇÕES_PEQUENAS_QUE_NÃO_PREJUDICAM_O_FUNCIONAMENTO_GERAL"
+	 * ULTIMO EDITOR: "NOME_DO_ULTIMO_EDITOR"
+  	 * DATA: "DD/MM/AAAA"
+	 * HORA: "HH/MM/SS"
+ 	 * LISTA DE ARQUIVOS UTILIZADOS NA BIBLIOTECA: (OBS: Colocar somente os arquivos .h e .txt(arquivos txt devem estar com define))
+	 *	- "ARQUIVO1"
+	 *	- "ARQUIVO2"
+	 *	- "ARQUIVO3" 
+	 *      - "ARQUIVO4"
+	*/
+	
+	EXEMPLO DO MAIN:
+
+	/* "NOME_DO_PROGRAMA"
+	 * VERSÃO: "X.X.X.X"
+	 * ULTIMO EDITOR: "NOME_DO_ULTIMO_EDITOR"
+	 * DATA: "DD/MM/AAAA"
+ 	 * HORA: "HH/MM/SS"
+	 *
+	*/
+
+	//LEGENDA DO MAIN:
+		X1.X2.X3.X4
+	X1 = Versão do programa
+	x2 = versão do main
+	x3 = versão das bibliotecas
+	x4 = versão das estruturas
+	PS: Qualquer alteração deve ser somada ao valor de cada x			
+
+DEFINIÇÕES DE NOMECLATURA:
+
+	Nome de função: Inglês e cammelCase
+	Nome de estrutura: Inglês e cammelCase
+	Nome de variáveis: Português e cammelCase
+	Nome de constantes: Português e toda maiúscula
+	Nome de arquivo: Português, minúsculo e cammelCase
+	Nome de destino de arquivo: Iniciando com "<DESTINO>" + nome em português e cammelCase
+		Exemplo: "<DESTINO>ArquivoDeRelatoriosPrincipal"
+		
+DEFINIÇÕES DE ARQUIVOS:
+	
+	-> Cada arquivo deve conter EXCLUSIVAMENTE funções relacionados ao seu tópico
+	-> Arquivos generalistas devem conter APENAS funções gerais
+
+DEFINIÇÕES DE PASTAS:
+	
+	-> Pasta "src":
+		*Deve conter os arquivos fontes do programa, como: os arquivos texto e os arquivos necessários de cada IDE para
+		rodar o programa
+	-> Pasta "doc":
+		*Deve conter informações adicionais do programa, como: Arquivos de definição, Documentação, Arquivos de especi
+		ficação do trabalho.
+	-> Pasta "build":
+		*Deve conter o makeFile
