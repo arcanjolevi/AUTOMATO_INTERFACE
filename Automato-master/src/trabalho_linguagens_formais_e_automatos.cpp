@@ -20,18 +20,14 @@ Trabalho_Linguagens_Formais_e_Automatos::~Trabalho_Linguagens_Formais_e_Automato
 
 /* Função ativada quando o botao Carregar AFD for clicado
  * filename tem o diretorio do arquivo
-  * se quizer transformar pra char, usar strcpy(sua variavel char, filename.toStdString().c_str());
  */
 void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_clicked()
 {
-   QString filename;
-    QByteArray temp;
-    char * temp2;
+    QString filename;
     filename = QFileDialog::getOpenFileName(this, tr("Abrir ficheiro"), "/home/", tr("Text files (*.txt)"));
-    temp = filename.toLocal8Bit();
-    temp2 = temp.data();
-    AFD = NULL; readfile(&AFD,temp2);
-    //ui->textBrowser->setText(AFD->show);  
+    char caminho[200];
+    strcpy(caminho,filename.toStdString().c_str());
+    AFD = NULL; readfile(&AFD,caminho);
 }
 
 
@@ -51,12 +47,10 @@ void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_3_clicked()//Process
 void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_2_clicked()
 {
     QString filename;
-    QByteArray temp;
-    char * temp2;
     filename = QFileDialog::getOpenFileName(this, tr("Abrir ficheiro"), "/home/", tr("Text files (*.txt)"));
-    temp = filename.toLocal8Bit();
-    temp2 = temp.data();
-    AFE = NULL; readfile(&AFE,temp2);
+    char caminho[200];
+    strcpy(caminho,filename.toStdString().c_str());
+    AFE = NULL; readfile(&AFE,caminho);
     AFD = convertAFEtoAFD(AFE);
     ui->textBrowser->setText(AFD->show());  
 }
@@ -76,10 +70,8 @@ void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_4_clicked()
  * na QString a para ser apresentada na tela
  */
 void Trabalho_Linguagens_Formais_e_Automatos::on_ButtonOk_clicked()
-{       
-        char temp[1000];
-        strcpy(temp,"/home/faculdade/automato.txt");
-        readfile(&AFD,temp);
+{
+
         char texto[1000];
         QString a;
         a = ui->lineEdit->text();
