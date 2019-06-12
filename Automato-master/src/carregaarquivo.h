@@ -2,10 +2,10 @@
 #define CARREGAARQUIVO_H 
 
 /* carregaafd.h
-* VERSÃO: 1.8
+* VERSÃO: 1.9
 * ULTIMO EDITOR: Lucas
-* DATA: 06/06/2019
-* HORA: 21:24
+* DATA: 12/06/2019
+* HORA: 00:04
 * LISTA DE ARQUIVOS UTILIZADOS NA BIBLIOTECA:
 * - automato.h
 * - transicao.h

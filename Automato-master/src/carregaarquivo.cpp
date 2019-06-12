@@ -160,7 +160,9 @@ char* NewFile(char *OldArquivo){
  * Pós-condição:Nenhum
 */
 void LoadAlphabet(FILE *arquivo,char *alfabeto){
-    fscanf(arquivo,"alfabeto=%[^\n]%*r",alfabeto);
+    char temp[30];
+    fscanf(arquivo,"%[^{]",temp);
+    fscanf(arquivo,"%[^\n]%*r",alfabeto);
 }
 
 /* Le os estados
@@ -171,7 +173,8 @@ void LoadAlphabet(FILE *arquivo,char *alfabeto){
 */
 void LoadState(FILE *arquivo,char *MatrizEstados[],int *QuantidadeEstados){
     char LinTemp[200];
-    fscanf(arquivo,"estados={");
+    char temp[30];
+    fscanf(arquivo,"%[^{]%*c",temp);
     fscanf(arquivo,"%[^}]%*c",LinTemp);
 	fscanf(arquivo,"%*r");
     *QuantidadeEstados = RemoveComma(LinTemp,MatrizEstados);
@@ -183,7 +186,8 @@ void LoadState(FILE *arquivo,char *MatrizEstados[],int *QuantidadeEstados){
  * Pós-condição:Nenhum
 */
 void LoadInitialState(FILE *arquivo,char *EstadoInicial){
-    fscanf(arquivo,"inicial=");
+    char temp[30];
+    fscanf(arquivo,"%[^=]%*c",temp);
 	fscanf(arquivo,"%[^\n]",EstadoInicial);
 	fscanf(arquivo,"%*r");
 }
@@ -194,7 +198,9 @@ void LoadInitialState(FILE *arquivo,char *EstadoInicial){
  * Pós-condição:Nenhum
 */
 void LoadStateFinal(FILE *arquivo,char *EstadosFinais){
-    fscanf(arquivo,"finais=%[^\n]%*r",EstadosFinais);
+    char temp[30];
+    fscanf(arquivo,"%[^{]",temp);
+    fscanf(arquivo,"%[^\n]%*r",EstadosFinais);
 
 }
 
