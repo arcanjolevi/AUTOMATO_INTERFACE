@@ -164,7 +164,7 @@ bool isFinal(Automato * AFE, vector<int> Fechamentos){
     
 }
 Estado *  buildState(int estado, Automato * AFE, vector<char> simbolosLidos, vector<Transicao*> transicoes, vector<int> Fechamentos){
-    string nome = "Q" + to_string(estado);
+    string nome = "r" + to_string(estado);
     return new Estado(nome, estado,  !estado, isFinal(AFE, Fechamentos), simbolosLidos, simbolosLidos.size(), transicoes, transicoes.size() );
 }
 Automato * convertAFEtoAFD(Automato * AFE){

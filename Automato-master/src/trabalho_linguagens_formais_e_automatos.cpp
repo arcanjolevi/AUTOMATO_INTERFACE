@@ -2,6 +2,7 @@
 #include "ui_trabalho_linguagens_formais_e_automatos.h"
 #include <QString>
 #include <QFileDialog>
+#include <QMessageBox>
 Automato * AFE;
 Automato * AFD;
 
@@ -25,9 +26,11 @@ void Trabalho_Linguagens_Formais_e_Automatos::on_pushButton_clicked()
 {
     QString filename;
     filename = QFileDialog::getOpenFileName(this, tr("Abrir ficheiro"), "/home/", tr("Text files (*.txt)"));
-    char caminho[200];
+    if(filename.isEmpty()) QMessageBox::warning(this, "Arquivo nao selecionado", "Selecione o arquivo", QMessageBox::Ok);
+    else{char caminho[200];
     strcpy(caminho,filename.toStdString().c_str());
     AFD = NULL; readfile(&AFD,caminho);
+    }
 }
 
 
